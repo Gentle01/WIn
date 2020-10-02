@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <div class="music" id="music">播放中....
+        <audio src="./static/music/bg.mp3" id="m1" autoplay="true" loop="true"></audio>
+    </div>
+    <div class="box1" id="box1" style="margin: 0px  auto;">盒子1</div>
+    <button id="btn" style=" width:100px ; height:50px ;background-color:blue ;color:beige;">测试</button>
+    <hr>
+    <div id="nav">
+        <ul>
+            <li>HOME</li>
+            <li>NEWS</li>
+            <li>RULE</li>
+            <li>VIDEO</li>
+            <li>ABOUT</li>
+        </ul>
+    </div>
+
+    <hr>
+    <div class="container border border-info p-4 " style="width: 350px;">
+        <form>
+            <div class="form-group">
+
+                <label for="username">用户名：</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+
+                    </div>
+                    <input id="username" class="form-control" type="text">
+                    <div class="input-group-append">
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">密码：</label>
+                <input id="password" class="form-control" type="text">
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input id="st" type="checkbox" class="custom-control-input">
+                <label class="custom-control-label" for="st">记住密码？</label>
+            </div>
+            <button id="btn2" class=" btn   btn-info form-control" type="button">登陆</button>
+        </form>
+    </div>
+</body>
+
+</html>
+
+
+<style>
+    .music {
+        position: fixed;
+        top: 50px;
+        left: 50px;
+        width: 100px;
+        height: 100px;
+        border: 1px solid red;
+        border-radius: 50%;
+        animation: music_css 5s linear infinite alternate;
+        text-align: center;
+        line-height: 100px;
+    }
+
+    @keyframes music_css {
+        0% {
+            border-radius: 10%;
+            border: 1px solid red;
+            transform: rotate(10deg);
+            transform: translate(100px);
+
+        }
+
+        25% {
+            border-radius: 30%;
+            border: 1px solid yellow;
+            transform: rotate(30deg);
+
+        }
+
+        50% {
+            border-radius: 40%;
+            background-color: aqua;
+            transform: rotate(60deg);
+            transform: translate(200px);
+        }
+
+        75% {
+            border-radius: 50%;
+            background-color: rgb(103, 53, 184);
+            transform: rotate(80deg);
+        }
+    }
+
+    #nav {
+        width: 1400px;
+        margin: 0px auto;
+    }
+
+    ul {
+
+        height: 104px;
+        color: #ffffff;
+        text-align: center;
+        margin: 0px auto;
+    }
+
+    ul li {
+        width: 228px;
+        float: left;
+        line-height: 104px;
+        background-color: #ff8804;
+        border: 6px solid #f27503;
+        list-style: none;
+    }
+
+    /* ul li:hover {
+       
+        background-color: #ffc414;
+
+       
+    } */
+
+    .active {
+        background-color: red;
+    }
+
+
+    .box1 {
+        display: flex;
+        width: 200px;
+        height: 200px;
+        background-color: black;
+        color: blanchedalmond;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        box-shadow: 1px -2px 2px red;
+        text-shadow: 1px -2px 2px yellow;
+
+        animation: myfirst 5s linear 2s infinite alternate;
+        transition: all 2s;
+
+    }
+
+
+    .box1:hover {
+
+        border-radius: 10%;
+        transform: rotate(30deg);
+
+    }
+
+    @keyframes myfirst {
+        0% {
+            border-radius: 10%;
+        }
+
+        50% {
+            transform: rotate(30deg);
+        }
+
+        75% {
+            transform: translate(30px, 10px)
+        }
+
+    }
+</style>
+
+<script>
+    let ischeck = localStorage.getItem('checkstatus')
+    u = document.getElementById('username')
+    p = document.getElementById('password')
+    st = document.getElementById('st')
+    btn2 = document.getElementById('btn2')
+    ischeck = JSON.parse(ischeck)
+    // 判断是否记住密码
+    console.log(typeof (ischeck))
+    if (ischeck) {
+
+        username = localStorage.getItem('username')
+        password = localStorage.getItem('password')
+        u.value = username
+        p.value = password
+        st.checked = true
+
+    }
+
+
+    btn2.onclick = function () {
+
+        if (st.checked) {
+            // 记住密码
+            let name = u.value
+            let pwd = p.value
+            localStorage.setItem("username", name)
+            localStorage.setItem("password", pwd)
+            localStorage.setItem("checkstatus", JSON.stringify(true))
+
+        }
+        else {
+            // 没有记住密码  ,
+            localStorage.removeItem("username")
+            localStorage.removeItem("password")
+            localStorage.setItem("checkstatus", JSON.stringify(false))
+        }
+    }
+
+
+
+
+
+    $('#btn').get(0).onclick = function () {
+        localStorage.setItem("name", "本地存储")
+        // localStorage.removeItem("name")
+        let crs = localStorage.getItem("name")
+        console.log(crs)
+        // 临时储存
+        sessionStorage.setItem("Lname", "临时储存")
+        let crs1 = sessionStorage.getItem("Lname")
+        console.log(crs1)
+
+    }
+    /*  
+           本地缓存
+       localStorage.setItem("name", "小明")
+       localStorage.removeItem("name")
+       let crs = localStorage.getItem("name") 
+        console.log(crs)
+   */
+
+    // 会话储存
+
+
+
+
+
+    audio = document.getElementById('m1')
+    music = document.getElementById('music')
+    console.log(audio)
+    console.log(music)
+    audio.volume = 0.3
+
+    audio.addEventListener('ended', function () {
+        console.log(播放完毕)
+    })
+
+    music.onclick = function () {
+        if (audio.paused) {
+            // 在暂停中  ，进行播放
+            audio.play()
+            music.style.animationPlayState = "running"
+
+
+        }
+        else {
+            // 在播放中..
+            // 暂停
+            audio.pause()
+            music.style.animationPlayState = "paused"
+
+        }
+    }
+
+
+
+    let nav = document.getElementById('nav')
+
+    lis = nav.getElementsByTagName('li')
+
+
+    for (let i in lis) {
+        lis[i].onmouseover = function () {
+            this.style.background = "#ffc414"
+        };
+
+        lis[i].onmousedown = function (e) {
+            this.style.background = "red"
+        }
+
+        lis[i].onmouseout = function () {
+            this.style.background = "#ff8804"
+        }
+
+    }
+</script>

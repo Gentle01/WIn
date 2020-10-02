@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        //   创建一个对象
+        var r = new XMLHttpRequest()
+
+        // 请求地址  与方式
+        r.open('post', 'url', true)
+
+
+        var da = new FormData()
+        da.append('page',1)
+        
+
+        // 发送请求
+        r.send() || r.send(da)  //携带请求参数    ajax 模拟的表单请求  ，组装数据
+        console.log(da)
+        // 设置超时时间
+        r.timeout = 3000
+
+        // 请求超时执行
+        r.ontimeout = function () {
+
+        }
+        // 请求出错
+        r.onerror = function () { }
+
+        // 状态改变监听函数
+        r.onreadystatechange = function () {
+
+        }
+
+        // 请求完毕有结果执行
+        r.onloadend = function () {
+
+        }
+
+    </script>
+
+</body>
+
+</html>
