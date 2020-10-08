@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <div class="container" id="app">
+        <table class="table  table-bordered  table-striped table-hover">
+            <thead class="font-weight-bold">想笑就笑</thead>
+            <tbody>
+                <tr class="text-center">
+                    <th colspan="2.5">查看</th>
+                    <th colspan="3">ionc</th>
+                </tr>
+                <tr v-for="infoList  in userinfo">
+                    <td>
+                        <img style="width: 70px ; height: 70px; " class="rounded-circle" :src="infoList.icon">
+                    </td>
+                    <td :class="'ss' +' '+ (infoList.status ==1?'b':'')">{{(infoList.status) ==1?'在职':'见习'}}</td>
+                    <td>{{(infoList.name)}}</td>
+                    <td>{{(infoList.phone)}}</td>
+                    <td>
+                        <a class="btn btn-danger" @click='my' id="s">{{infoList.sf}}</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="./static/js/vue.js"></script>
+
+    <script>
+
+
+
+        // 创建一个VUe对象
+        var vue = new Vue({
+
+            el: '#app',
+
+            data: {
+                userinfo: [
+                    {
+                        icon: './static/img/img1.jpg',
+                        status: 0,
+                        name: "张老三",
+                        phone: 184283608855,
+                        sf: "店长"
+                    },
+                    {
+                        icon: './static/img/img1.jpg',
+                        status: 1,
+                        name: "张老三",
+                        phone: 184283608855,
+                        sf: "店长"
+                    },
+                    {
+                        icon: './static/img/img1.jpg',
+                        status: 0,
+                        name: "张老三",
+                        phone: 184283608855,
+                        sf: "店长"
+                    },
+                    {
+                        icon: './static/img/img1.jpg',
+                        status: 1,
+                        name: "张老三",
+                        phone: 184283608855,
+                        sf: "店长"
+                    },
+                    {
+                        icon: './static/img/img1.jpg',
+                        status: 0,
+                        name: "张老三",
+                        phone: 184283608855,
+                        sf: "店长"
+                    },
+                    {
+                        icon: './static/img/img1.jpg',
+                        status: 0,
+                        name: "张老三",
+                        phone: 184283608855,
+                        sf: "店长"
+                    },
+                    {
+                        icon: './static/img/img1.jpg',
+                        status: 1,
+                        name: "张老三",
+                        phone: 184283608855,
+                        sf: "店长"
+                    },
+                ]
+
+
+            },
+
+            methods: {
+
+                my() {
+                   /*  var r = confirm("按下按钮!");
+                    console.log(r)
+                    if (r ==true) {
+                        console.log(1)
+                    }
+                    else {
+                        console.log(2)
+                    } */
+                    var  r= prompt("sss")
+                    console.log(r)
+                }
+            }
+        })
+
+    </script>
+</body>
+
+
+</html>
+
+<style>
+    .b {
+        color: coral;
+    }
+
+    .b1 {
+
+        display: flex;
+        animation: mm 5s linear infinite alternate;
+    }
+
+
+
+    @keyframes mm {
+        0% {
+            background-color: black;
+            border-radius: 20%;
+            transform: rotate(20deg);
+        }
+
+        25% {
+            background-color: rgb(173, 50, 50);
+            border-radius: 40%;
+            transform: rotate(40deg);
+        }
+
+        50% {
+            background-color: rgb(41, 2, 2);
+            border-radius: 60%;
+            transform: rotate(50deg);
+        }
+
+        75% {
+            background-color: black;
+            border-radius: 80%;
+            transform: rotate(60deg);
+        }
+    }
+</style>
